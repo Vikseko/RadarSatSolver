@@ -41,6 +41,9 @@ typedef struct ClauseExchange
 
    /// Literals of this clause.
    int lits[0];
+   
+   /// Is this clause uniq or not?
+   bool repeat;
 
 } ClauseExchange;
 

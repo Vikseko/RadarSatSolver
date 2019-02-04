@@ -234,8 +234,9 @@ void Solver::importUnitClauses() {
 void Solver::importClauses() {
    assert(decisionLevel == 0);
    int lbd;
-   while (cbkImportClause(issuer, &lbd, importedClause)) {
-      CRef cr = ca.alloc(importedClause, true);
+   bool repeat;
+   while (cbkImportClause(issuer, &lbd, &repeat, importedClause)) {
+      CRef cr = ca.alloc(importedClause, repeat);
       ca[cr].set_lbd(lbd);
       if (lbd <= core_lbd_cut){
          learnts_core.push(cr);
