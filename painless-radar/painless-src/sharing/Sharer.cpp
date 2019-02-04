@@ -36,7 +36,7 @@ static void * mainThrSharing(void * arg)
 
    int round = 0;
 
-   int sleepTime = Parameters::getIntParam("shr-sleep", 500000);
+   int sleepTime = Parameters::getIntParam("shr-sleep", 1000000);
 
    while (true) {
       // Sleep 

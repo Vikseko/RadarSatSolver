@@ -20,7 +20,7 @@
 #include "painless.h"
 
 #include "clauses/ClauseManager.h"
-#include "sharing/SimpleSharing.h"
+#include "sharing/RadarSatSharing.h"
 #include "sharing/HordeSatSharing.h"
 #include "sharing/Sharer.h"
 #include "solvers/SolverFactory.h"
@@ -31,6 +31,7 @@
 #include "working/SequentialWorker.h"
 #include "working/Portfolio.h"
 #include "working/CubeAndConquer.h"
+#include <math.h>
 
 #include <unistd.h>
 
@@ -74,7 +75,7 @@ int main(int argc, char ** argv)
       printf("\t-c=<INT>\t\t number of cpus, default is 4.\n");
       printf("\t-wkr-strat=1...2\t 1=portfolio, 2=cube and conquer," \
              " default is portfolio\n");
-      printf("\t-shr-strat=1...2\t 1=alltoall, 2=hordesat sharing," \
+      printf("\t-shr-strat=1...2\t 1=radar, 2=hordesat sharing," \
              " default is 1\n");
       printf("\t-shr-sleep=<INT>\t time in usecond a sharer sleeps each" \
              " round, default 500000 (0.5s)\n");
@@ -167,16 +168,17 @@ int main(int argc, char ** argv)
       case 1 :
          nSharers   = 1;
          sharers    = new Sharer*[nSharers];
-         sharers[0] = new Sharer(0, new SimpleSharing(), solvers, solvers);
+         sharers[0] = new Sharer(0, new RadarSatSharing(), solvers, solvers);
          break;
       case 2 :
-         nSharers = cpus;
+         //nSharers = cpus;
+         nSharers = 1;
          sharers  = new Sharer*[nSharers];
 
          for (size_t i = 0; i < nSharers; i++) {
             from.clear();
             from.push_back(solvers[i]);
-            sharers[i] = new Sharer(i, new HordeSatSharing(), from,
+            sharers[i] = new Sharer(i, new RadarSatSharing(), from,
                                     solvers);
          }
          break;
@@ -193,7 +195,7 @@ int main(int argc, char ** argv)
          for (size_t i=0; i < nSolvers; i++) {
             from.push_back(solvers[i]);
          }
-         sharers[0] = new Sharer(0, new SimpleSharing(), from, solvers);
+         sharers[0] = new Sharer(0, new RadarSatSharing(), from, solvers);
 
          from.clear();
          from.push_back(solvers[nSolvers]);

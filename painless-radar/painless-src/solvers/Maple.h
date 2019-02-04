@@ -18,6 +18,8 @@
 // -----------------------------------------------------------------------------
 
 #pragma once
+#ifndef SOLVERS_MAPLE_H
+#define SOLVERS_MAPLE_H
 
 #include "../clauses/ClauseBuffer.h"
 #include "../solvers/SolverInterface.h"
@@ -122,6 +124,7 @@ protected:
    
    /// Callback to export/import clauses.
    friend MapleCOMSPS::Lit  cbkImportUnit  (void *);
-   friend bool cbkImportClause(void *, int *, MapleCOMSPS::vec<MapleCOMSPS::Lit> &);
+   friend bool cbkImportClause(void *, int *, bool *, MapleCOMSPS::vec<MapleCOMSPS::Lit> &);
    friend void cbkExportClause(void *, int, MapleCOMSPS::vec<MapleCOMSPS::Lit> &);
 };
+#endif // SOLVERS_MAPPLESAT_H

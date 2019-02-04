@@ -25,7 +25,7 @@ all:
 	###                PaInleSS                    ###
 	##################################################
 	+ $(MAKE) -C painless-src
-	cd painless-src && mv painless ../painless
+	cd painless-src && mv painless ../painless-radar
 
 docs:
 	rm -rf documents
@@ -58,4 +58,4 @@ clean:
 	###                PaInleSS                    ###
 	##################################################
 	+ $(MAKE) clean -C painless-src
-	rm -rf painless documents
+	rm -rf painless-radar documents

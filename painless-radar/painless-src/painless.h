@@ -18,6 +18,8 @@
 // -----------------------------------------------------------------------------
 
 #pragma once
+#ifndef BOBSAT_H
+#define BOBSAT_H
 
 #include "sharing/Sharer.h"
 #include "solvers/SolverInterface.h"
@@ -45,3 +47,5 @@ extern SatResult finalResult;
 
 /// Model for SAT instances
 extern vector<int> finalModel;
+
+#endif

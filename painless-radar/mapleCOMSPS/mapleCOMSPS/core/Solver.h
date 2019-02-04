@@ -106,7 +106,7 @@ public:
     void *   issuer;												// used as the callback parameter
 
     Lit  (* cbkImportUnit)  (void *);
-    bool (* cbkImportClause)(void *, int *, vec<Lit> &);
+    bool (* cbkImportClause)(void *, int *, bool *, vec<Lit> &);
     void (* cbkExportClause)(void *, int, vec<Lit> &);	// callback for clause learning
     
     // change the passed vector 'ps'.
