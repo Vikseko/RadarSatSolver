@@ -55,7 +55,10 @@ RadarSatSharing::doSharing(int idSharer, const vector<SolverInterface *> & from,
             if(it != hashtable1.end())
             {
                it->second++;
+<<<<<<< HEAD
                if(it->second==2)
+=======
+>>>>>>> 4f73f5da6f3f1067e7f11f6814ced8879d776b44
                tmp[k]->repeat = false;
             }
             else
@@ -86,7 +89,11 @@ RadarSatSharing::doSharing(int idSharer, const vector<SolverInterface *> & from,
    }
    else
    {
+<<<<<<< HEAD
       if(sharingcount==51){
+=======
+      if(sharingcount=51){
+>>>>>>> 4f73f5da6f3f1067e7f11f6814ced8879d776b44
          hashtable1.clear();
       }
       for (int i = 0; i < from.size(); i++) {
